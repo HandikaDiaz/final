@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../data/image/logo.png">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="../data/css/nav.css">
+    <link rel="stylesheet" href="../data/css/index.css">
+    <link rel="stylesheet" href="../data/css/card.css">
+</head>
+
+<body class="bg-dark">
+    <!-- Start Navbar -->
+
+    <nav class="navbar navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+            <h1 class="navbar-brand fs-1 text-info ms-3 my-2">Provinsi & Kabupaten</h1>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    {{!-- <li class="nav-item">
+                        <a class="nav-link active text-info" aria-current="page" href="#">Home</a>
+                    </li> --}}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- End Navbar -->
+    <!-- Pop UP  -->
+
+    {{#if messages.success}}
+    <div class="alert alert-success d-flex fw-bold justify-content-between" role="alert">
+        {{messages.success}}
+        <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {{/if}}
+    {{#if messages.danger}}
+    <div class="alert alert-danger d-flex fw-bold justify-content-between" role="alert">
+        {{messages.danger}}
+        <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {{/if}}
+
+    <!-- Pop UP  -->
+    <!-- Start Login Form -->
+
+    <form class="mt-5 card w-50 mx-auto rounded-4 shadow p-3 mb-5 border-info bg-dark" action="/login"
+        method="post">
+        <h1 class="text-center fw-semibold mt-4 text-info">Login</h1>
+        <div class="w-75 mx-auto mb-4 fs-5 fw-bold text-info">
+            <div class="mb-3">
+                <label for="inputEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="mb-3">
+                <label for="inputPassword" class="form-label">Password</label>
+                <input type="password" class="form-control" id="inputPassword" name="password"
+                    placeholder="Your Password" required>
+            </div>
+            <div style="font-size: 15px; justify-content: space-between;" class="d-flex my-3">
+                <div class="d-flex">
+                    <input class="bg-white shadow-none me-1" type="checkbox" id="me">
+                    <label for="me">Remember Me</label>
+                </div>
+                <div>
+                    <a class="text-decoration-none text-dark" href="/login">Forgot Password?</a>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-dark my-3 w-100 submit text-info border-info">Login</button>
+            <div style="font-size: 15px;" class="text-center mt-2">
+                <a class="text-decoration-none text-info" href="/register">Don't have an account?</a>
+            </div>
+        </div>
+    </form>
+
+    <!-- End Login Form -->
+    <!-- Start Script -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="../data/js/time.js"></script>
+
+    <!-- End Script -->
+</body>
+
+</html>

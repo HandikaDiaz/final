@@ -1,0 +1,65 @@
+/* Hover Select */
+.hover li button {
+    position: relative;
+}
+
+.hover li button::before {
+    content: "";
+    background-color: #0dcaf0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 0;
+    transition: width 0.3s ease-in-out;
+}
+
+.hover li button:hover::before {
+    content: "";
+    background-color: #0dcaf0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+}
+
+.hover li button {
+    transition: all 0.3s;
+}
+
+.hover li button:hover {
+    color: white !important;
+    background-color: transparent !important;
+}
+
+.hover li button:active {
+    color: black;
+    font-weight: 600;
+    font-size: 18px;
+    transition: 0.5s;
+}
+/* Hover Select */
+
+/* Hover Nav */
+.nav-hover {
+    transition: all 0.5s;
+}
+
+.nav-hover:hover {
+    color: black !important;
+    border-color: white !important;
+}
+/* Hover Nav */
+
+/* Hover Add */
+.add-hover {
+    transition: all 0.5s;
+}
+
+.add-hover:hover {
+    color: black !important;
+    background-color: #0dcaf0;
+    border-color: white !important;
+}
+/* Hover Add */

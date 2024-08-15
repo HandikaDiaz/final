@@ -1,0 +1,11 @@
+SELECT * FROM provinsi_tb;
+
+SELECT 
+	provinsi_tb.id AS provinsi_id,
+	provinsi_tb.nama AS nama_provinsi,
+	kabupaten_tb.id AS kabupaten_id,
+	kabupaten_tb.nama AS nama_kabupaten
+FROM provinsi_tb
+LEFT JOIN kabupaten_tb ON provinsi_tb.id = kabupaten_tb.provinsi_id;
+
+SELECT * FROM provinsi_tb WHERE pulau = 'Jawa';

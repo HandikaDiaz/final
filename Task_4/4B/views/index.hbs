@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../data/image/logo.png">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../data/hover.css">
+</head>
+
+<body class="bg-dark">
+    <!-- Start Navbar -->
+
+    <nav class="navbar navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+            <h1 class="navbar-brand fs-1 text-info ms-3 my-2">Provinsi & Kabupaten</h1>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    {{!-- <li class="nav-item">
+                        <a class="nav-link active text-info" aria-current="page" href="#">Home</a>
+                    </li> --}}
+                </ul>
+                <a class="btn btn-outline-info me-3 text-info nav-hover fw-bold" style="width: 150px;"
+                    href="/provinsi">Add Provinsi</a>
+                <a class="btn btn-outline-info me-2 text-info nav-hover fw-bold" style="width: 150px;"
+                    href="/kabupaten">Add Kabupaten</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- End Navbar -->
+    <!-- Pop UP  -->
+
+    {{#if messages.success}}
+    <div class="alert alert-success d-flex fw-bold justify-content-between" role="alert">
+        {{messages.success}}
+        <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {{/if}}
+    {{#if messages.projectSuccess}}
+    <div class="alert alert-info d-flex fw-bold justify-content-between" role="alert">
+        {{messages.projectSuccess}}
+        <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {{/if}}
+
+    <!-- Pop UP  -->
+    <!-- Select Card -->
+
+    <div class="d-flex">
+        <form method="post" action="/">
+            <div class="dropdown" style="margin-left: 30px;">
+                <button class="btn btn-dark btn-outline-info dropdown-toggle px-5 fw-bold" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Select
+                </button>
+                <ul class="dropdown-menu bg-dark hover border-info">
+                    <li><button class="dropdown-item text-info" name="filter" value="all" type="submit">All</button>
+                    </li>
+                    <li><button class="dropdown-item text-info" name="filter" value="provinsi"
+                            type="submit">Provinsikan</button></li>
+                    <li><button class="dropdown-item text-info" name="filter" value="kabupaten"
+                            type="submit">Kabupaten</button></li>
+                </ul>
+            </div>
+        </form>
+        <div class="ms-auto p-2">
+            <div class="dropdown btn-group">
+                <button class="btn btn-dark btn-outline-info dropdown-toggle fw-bold" style="width: 148px; margin-right: 13px;" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-bars text-info"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end bg-dark hover" style="height: 83px;">
+                    <li><a class="btn btn-outline-info text-info nav-hover fw-bold me-3 mb-2 w-100"
+                            href="/logout">Logout</a>
+                    </li>
+                    <li><a class="btn btn-outline-warning text-warning nav-hover fw-bold me-3 mb-2 w-100"
+                            href="/blog-edit">Edit</a>
+                    </li>
+                    <li><a class="btn btn-outline-danger text-danger nav-hover fw-bold me-2 w-100"
+                            href="/delete">Delete</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Select Card -->
+    <!-- Card -->
+
+    <div class="card-group row row-cols-1 row-cols-md-3 g-4 mx-auto mt-1 mb-5" style="width: 90%;">
+        {{#each provinsi}}
+        <div class="text-center col">
+            <div class="card m-auto text-center bg-dark border-info" style="width: 18rem;">
+                <img src="../uploadImage/{{this.photo}}" class="card-img-top h-100 mt-3 mx-auto d-block" alt="...">
+                <div class="card-body">
+                    <h4 class="card-title text-info fw-bold">{{this.nama}}</h4>
+                    <p class="card-text text-white">{{this.diresmikan}}</p>
+                </div>
+            </div>
+            <a href="/detail-provinsi/{{this.id}}" class="btn btn-primary mt-3 text-dark bg-info fw-bold"
+                style="width: 18rem;">Detail</a>
+        </div>
+        {{/each}}
+        {{#each kabupaten}}
+        <div class="text-center col">
+            <div class="card m-auto text-center bg-dark border-info" style="width: 18rem;">
+                <img src="../uploadImage/{{this.photo}}" class="card-img-top h-100 mt-3 mx-auto d-block" alt="...">
+                <div class="card-body">
+                    <h4 class="card-title text-info fw-bold">{{this.nama}}</h4>
+                    <p class="card-text text-white">{{this.diresmikan}}</p>
+                </div>
+            </div>
+            <a href="/detail-provinsi/{{this.provinsi_id}}" class="btn btn-primary mt-3 text-dark bg-info fw-bold"
+                style="width: 18rem;">Detail</a>
+        </div>
+        {{/each}}
+    </div>
+
+    <!-- Card -->
+    <!-- Start Script -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <!-- End Script -->
+</body>
+
+</html>
